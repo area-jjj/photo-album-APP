@@ -86,12 +86,12 @@ export default function ExpandedView({ photo, onClose, onPrev, onNext, hasPrev, 
       {/* Main content area */}
       <div className="relative z-10 flex w-full h-full" onClick={(e) => e.stopPropagation()}>
         {/* LEFT: Large photo */}
-        <div className="flex-1 flex items-center justify-center p-6 overflow-hidden">
-          {/* Prev arrow */}
+        <div className="flex-1 flex items-center justify-center overflow-hidden">
+          {/* Prev arrow - positioned relative to viewport left */}
           {hasPrev && (
             <button
               onClick={onPrev}
-              className="absolute left-2 md:left-6 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition-colors z-20"
+              className="absolute left-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition-colors"
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -99,27 +99,27 @@ export default function ExpandedView({ photo, onClose, onPrev, onNext, hasPrev, 
             </button>
           )}
 
-          <img
-            src={photo.fullBase64}
-            alt={photo.title}
-            className="max-h-[80vh] max-w-[90%] object-contain rounded-lg shadow-2xl"
-          />
-
-          {/* Next arrow */}
+          {/* Next arrow - positioned relative to viewport right */}
           {hasNext && (
             <button
               onClick={onNext}
-              className="absolute right-2 md:right-6 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition-colors z-20"
+              className="absolute right-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition-colors"
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
               </svg>
             </button>
           )}
+
+          <img
+            src={photo.fullBase64}
+            alt={photo.title}
+            className="max-h-[85vh] max-w-[90%] object-contain rounded-lg shadow-2xl"
+          />
         </div>
 
-        {/* RIGHT: Note & details */}
-        <div className="w-[380px] bg-white flex flex-col shadow-2xl">
+        {/* RIGHT: Note & details - collapsible on small screens */}
+        <div className="w-80 md:w-96 bg-white flex flex-col shadow-2xl transition-all duration-300">
           {/* Header */}
           <div className="flex items-center justify-between px-5 py-4 border-b border-gray-100">
             <h3 className="text-sm font-semibold text-gray-700">照片详情</h3>
