@@ -61,19 +61,13 @@ export function usePhotos() {
 
   const goPrev = () => {
     if (hasPrev) {
-      closeExpandedView()
-      setTimeout(() => {
-        openExpandedView(filteredPhotos[expandedIndex - 1].id)
-      }, 150)
+      openExpandedView(filteredPhotos[expandedIndex - 1].id)
     }
   }
 
   const goNext = () => {
     if (hasNext) {
-      closeExpandedView()
-      setTimeout(() => {
-        openExpandedView(filteredPhotos[expandedIndex + 1].id)
-      }, 150)
+      openExpandedView(filteredPhotos[expandedIndex + 1].id)
     }
   }
 

@@ -290,21 +290,15 @@ export default function HomePage() {
 
         {/* Expanded view overlay */}
         {expandedPhoto && (
-          <div className="fixed inset-0 z-40 flex items-center justify-center">
-            <div
-              className="absolute inset-0 bg-black/30 backdrop-blur-sm"
-              onClick={closeExpandedView}
+          <div className="fixed inset-0 z-[100]" onClick={closeExpandedView}>
+            <ExpandedView
+              photo={expandedPhoto}
+              onClose={closeExpandedView}
+              onPrev={goPrev}
+              onNext={goNext}
+              hasPrev={hasPrev}
+              hasNext={hasNext}
             />
-            <div className="relative z-10 w-full max-w-5xl mx-4 flex items-center justify-center animate-modal-enter">
-              <ExpandedView
-                photo={expandedPhoto}
-                onClose={closeExpandedView}
-                onPrev={goPrev}
-                onNext={goNext}
-                hasPrev={hasPrev}
-                hasNext={hasNext}
-              />
-            </div>
           </div>
         )}
       </main>

@@ -76,7 +76,7 @@ export default function ExpandedView({ photo, onClose, onPrev, onNext, hasPrev, 
   }
 
   return (
-    <div className="fixed inset-0 z-50 flex items-stretch">
+    <div className="fixed inset-0 z-[100] flex items-stretch">
       {/* Backdrop */}
       <div
         className="absolute inset-0 bg-black/60 backdrop-blur-sm"
@@ -84,14 +84,14 @@ export default function ExpandedView({ photo, onClose, onPrev, onNext, hasPrev, 
       />
 
       {/* Main content area */}
-      <div className="relative z-10 flex w-full h-full">
+      <div className="relative z-10 flex w-full h-full" onClick={(e) => e.stopPropagation()}>
         {/* LEFT: Large photo */}
         <div className="flex-1 flex items-center justify-center p-6 overflow-hidden">
           {/* Prev arrow */}
           {hasPrev && (
             <button
               onClick={onPrev}
-              className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition-colors"
+              className="absolute left-2 md:left-6 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition-colors z-20"
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -109,7 +109,7 @@ export default function ExpandedView({ photo, onClose, onPrev, onNext, hasPrev, 
           {hasNext && (
             <button
               onClick={onNext}
-              className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition-colors"
+              className="absolute right-2 md:right-6 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition-colors z-20"
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
